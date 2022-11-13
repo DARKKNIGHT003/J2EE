@@ -1,0 +1,260 @@
+				ADVANCED JAVA
+			----------------------------------
+With Core Java knowledge we can develop Stand Alone Applications.
+The Applications which are running on a Single Machine are called Stand Alone Applications.
+Eg: Calculator, MS Word
+Any Core Java Application
+
+If we want to develop Web Applications then we should go for Advanced Java.
+The Applications which are providing Services over the Web are called Web Applications.
+
+Eg:gmail.com, facebook.com
+In Java we can develop Web Applications by using the following Technologies...
+	*JDBC
+	*Servlets
+	*JSP's
+Where ever Presentation Logic is required i.e. to display something to the End User then we
+should go for JSP i.e. JSP meant for View Component.
+
+Eg: display login page
+------------------------
+display inbox page
+display error page
+display result page
+etc..
+Where ever some Processing Logic is required then we should go for Servlet i.e.
+Servlet meant for Processing Logic/ Business Logic. Servlet will always work internally.
+
+Eg: Verify User
+Communicate with Database
+Process End User's Data
+etc..
+From Java Application (Normal Java Class OR Servlet) if we want to communicate with Database
+then we should go for JDBC.
+
+To get Mails Information from Database
+
+In Java there are 3 Editions are available
+--------------------------------------------
+1. Java Standard Edition (JSE | J2SE)
+2. Java Enterprise Edition (JEE | J2EE)
+3. Java Micro Edition (JME | J2ME)
+
+JDBC is the Part of JSE
+Servlets and JSP's are the Part of JEE
+Current Version of JSE is Java 1.8
+Current Version of JDBC is: 4.2 V
+Current Version of JEE is 7.0
+Current Version of Servlets: 3.1 V
+Current Version of JSP is: 2.3 V
+
+Current Versions Are:
+JDBC 4.2 V
+Servlets 3.1 V
+JSP's 2.3 V
+
+JDBC in Simple Way
+-------------------
+
+
+Driver (Translator):
+---------------------
+To convert Java specific calls into Database specific calls and Database specific calls into Java calls.
+
+Connection (Road):
+-------------------
+By using Connection, Java Application can communicate with Database.
+
+Statement (Vehicle):
+----------------------
+By using Statement Object we can send our SQL Query to the Database and we can get Results
+from Database.
+
+ResultSet:
+-----------
+ResultSet holds Results of SQL Query.
+
+
+
+Steps for JDBC Application:
+-----------------------------
+1. Load and Register Driver
+2. Establish Connection between Java Application and Database
+3. Create Statement Object
+4. Send and Execute SQL Query
+5. Process Results from ResultSet
+6. Close Connection
+
+Demo program-1:
+----------------
+package demo1;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import oracle.jdbc.OracleDriver;
+
+public class Demo1
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+		    DriverManager.registerDriver(new OracleDriver());
+		    //This is for loading the odbc driver
+		    System.out.println("Driver loaded Successfully");  
+		    DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/XE","sagar","root"); //connecting to the database
+		    System.out.println("Connection Successful");
+		}
+		catch (SQLException e)
+		{
+		    System.out.println("Some problem in connection");
+		    e.printStackTrace();
+		}
+
+	}
+
+}
+
+
+Demo Program-2:
+----------------
+import java.sql.*;
+public class JdbcDemo
+{
+public static void main(String[] args) throws Exception
+{
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/XE","sagar","root");
+Statement st = con.createStatement();
+ResultSet rs= st.executeQuery("select * from student");
+while(rs.next())
+{
+System.out.println(rs.getInt(1)+".."+rs.getString(2)+".."+rs.getString(2)+");
+}
+con.close();
+}
+}
+
+Storage Areas
+-----------------
+As the Part of our Applications, we required to store our Data like Customers Information, Billing
+Information, Calls Information etc..
+
+To store this Data, we required Storage Areas. There are 2 types of Storage Areas.
+1) Temporary Storage Areas
+2) Permanent Storage Areas
+
+Temporary Storage Areas:
+-------------------------
+These are the Memory Areas where Data will be stored temporarily.
+Eg: All JVM Memory Areas (like Heap Area, Method Area, Stack Area etc).
+Once JVM shutdown all these Memory Areas will be cleared automatically.
+
+Permanent Storage Areas:
+--------------------------
+Also known as Persistent Storage Areas.
+Here we can store Data permanently.
+Eg: File Systems, Databases, Data warehouses, Big Data Technologies etc
+
+File Systems:
+--------------
+File Systems can be provided by Local operating System.
+File Systems are best suitable to store very less Amount of Information.
+
+Limitations:
+-------------
+1) We cannot store huge Amount of Information.
+2) There is no Query Language support and hence operations will become very complex.
+3) There is no Security for Data.
+4) There is no Mechanism to prevent duplicate Data. Hence there may be a chance of Data
+Inconsistency Problems.
+To overcome the above Problems of File Systems, we should go for Databases.
+
+Databases:
+-----------
+1) We can store Huge Amount of Information in the Databases.
+2) Query Language Support is available for every Database and hence we can perform Database
+Operations very easily.
+3) To access Data present in the Database, compulsory username and pwd must be required.
+Hence Data is secured.
+4) Inside Database Data will be stored in the form of Tables. While developing Database Table
+Schemas, Database Admin follow various Normalization Techniques and can implement
+various Constraints like Unique Key Constrains, Primary Key Constraints etc which prevent
+Data Duplication. Hence there is no chance of Data Inconsistency Problems.
+
+Limitations of Databases:
+---------------------------
+1) Database cannot hold very Huge Amount of Information like Terabytes of Data.
+2) Database can provide support only for Structured Data (Tabular Data OR Relational Data) and
+cannot provide support for Semi Structured Data (like XML Files) and Unstructured Data (like
+Video Files, Audio Files, Images etc)
+To overcome this Problems we should go for more Advanced Storage Areas like Big Data
+Technologies, Data warehouses etc..
+
+JDBC
+------
+*JDBC is a Technology, which can be used to communicate with Database from Java
+Application.
+* JDBC is the Part of Java Standard Edition (J2SE|JSE)
+* JDBC is a Specification defined by Java Vendor (Sun Micro Systems) and implemented by
+Database Vendors.
+* Database Vendor provided Implementation is called "Driver Software".
+
+
+JDBC Features:
+-----------------
+1) JDBC API is Standard API. We can communicate with any Database without rewriting our
+Application i.e. it is Database Independent API.
+2) JDBC Drivers are developed in Java and hence JDBC Concept is applicable for any Platform. i.e.
+JDBC Is Platform Independent Technology.
+3) By using JDBC API, we can perform basic CRUD Operations very easily.
+These Operations also known as CURD/ SCUD Operations (Ameerpet People created Terminology)
+We can also perform Complex Operations (like Inner Joins, Outer Joins, calling Stored Procedures
+etc) very easily by using JDBC API.
+4) JDBC API supported by Large Number of Vendors and they developed multiple Products based
+on JDBC API.
+
+
+List of supported Vendors we can check in the link
+-----------------------------------------------------
+http://www.oracle.com/technetwork/java/index-136695.html
+
+JDBC Versions:
+---------------
+* JDBC 3.0 is Part J2SE 1.4
+* No Update in Java SE 5.0
+* JDBC 4.0 is Part Java SE 6.0
+* JDBC 4.1 is Part Java SE 7.0
+* JDBC 4.2 is Part Java SE 8.0
+
+Evolution of JDBC:
+----------------------
+* If we want to communicate with Database by using C OR C++, compulsory we have to use
+database specific Libraries in our Application directly.
+* In the above Diagram C OR C++ Application uses Oracle specific Libraries directly.
+* The Problem in this Approach is, if we want to migrate Database to another Database then we
+have to rewrite Total Application once again by using new Database specific Libraries.
+* The Application will become Database Dependent and creates Maintenance Problems.
+* To overcome this Problem, Microsoft People introduced "ODBC" Concept in 1992. It is
+Database Independent API.
+* With ODBC API, Application can communicate with any Database just by selecting
+corresponding ODBC Driver.
+* We are not required to use any Database specific Libraries in our Application. Hence our
+Application will become Database Independent.
+
+Limitations of ODBC:
+----------------------
+1) ODBC Concept will work only for Windows Machines. It is Platform Dependent Technology.
+2) ODBC Drivers are implemented in C Language. If we use ODBC for Java Applications, then
+Performance will be down because of internal conversions from Java to C and C to Java.
+* Because of above Reasons, ODBC Concept is not suitable for Java Applications.
+* For Java Applications, SUN People introduced JDBC Concept.
+* JDBC Concept Applicable for any Platform. It is Platform Independent Technology.
+* JDBC Drivers are implemented in Java. If we use JDBC for Java Applications, then internal
+Conversions are not required and hence there is no Effect on Performance.
+
+***Note:
+1) ODBC Concept is applicable for any Database and for any Language, but only for Windows
+Platform.
+2) JDBC Concept is Applicable for any Platform and for any Database, but only for Java Language.
+
+
