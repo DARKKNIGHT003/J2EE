@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <!--<bean id = "ATCCheatObjectValue" class = "com.tns.spdiob.ATCCheat"/>
+
+    <bean id ="s" class = "com.tns.spdiob.Student1">
+    <property name ="chit" ref = "ATCCheatObjectValue"/>
+    </bean>
+
+    <bean id ="s1" class = "com.tns.spdiob.Student2">
+    <property name ="chit" ref = "ATCCheatObjectValue"/>
+    </bean>
+-->
+
+    <bean name="emp" class="com.tns.spdicol.Employee">
+    <property name="name" value="Darshan M"/>
+    <property name="Phones">
+    <list>
+    <value>8867026854</value>
+    <value>9844960193</value>
+    <value>8123906519</value>
+    </list>
+    </property>
+    <property name="Addresses">
+    <set>
+    <value>Bangalore</value>
+    <value>Mangalore</value>
+    <value>Mandya</value>
+    </set>
+    </property>
+    <property name="courses">
+    <map>
+    <entry key="java" value="2months"></entry>
+    <entry key="C++" value="5months"></entry>
+    <entry key="Python" value="3months"></entry>
+    </map>
+    </property>
+    </bean> 
+</beans> 
